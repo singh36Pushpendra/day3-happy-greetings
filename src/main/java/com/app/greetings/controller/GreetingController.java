@@ -24,6 +24,6 @@ public class GreetingController {
 
     @PostMapping("/postgreet")
     public String greeting(@RequestBody User user) {
-        return service.getGreet(user);
+        return service.add(user);
     }
 }
