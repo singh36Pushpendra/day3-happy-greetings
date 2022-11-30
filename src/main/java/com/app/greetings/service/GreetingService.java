@@ -4,8 +4,11 @@ import com.app.greetings.model.User;
 import com.app.greetings.repository.IGreetingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.stylesheets.LinkStyle;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class GreetingService {
@@ -26,5 +29,15 @@ public class GreetingService {
         Optional<User> userOptional = repo.findById(id);
         User user = userOptional.get();
         return "Hello " + user.getFirstName() + " " + user.getLastName();
+    }
+
+    public List<String> getList() {
+        List<User> allUser = repo.findAll();
+        List<String> greetings = allUser.stream()
+                .map(user -> "Hello " + user.getFirstName() + " " + user.getLastName())
+                .collect(Collectors.toList());
+
+        return greetings;
+
     }
 }
