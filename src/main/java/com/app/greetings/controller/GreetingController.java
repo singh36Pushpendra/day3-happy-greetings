@@ -26,4 +26,9 @@ public class GreetingController {
     public String greeting(@RequestBody User user) {
         return service.add(user);
     }
+
+    @GetMapping("/getgreet")
+    public String greeting(@RequestParam int id) {
+        return service.get(id);
+    }
 }
