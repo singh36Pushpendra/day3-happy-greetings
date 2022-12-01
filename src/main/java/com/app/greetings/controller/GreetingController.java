@@ -43,4 +43,9 @@ public class GreetingController {
     public User greeting(@RequestParam int id, @RequestBody User user) {
         return service.update(id, user);
     }
+
+    @DeleteMapping("/delgreet")
+    public User greetDel(@RequestParam int id) {
+        return service.delUser(id);
+    }
 }

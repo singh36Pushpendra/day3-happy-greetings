@@ -47,4 +47,11 @@ public class GreetingService {
         User updatedUser = repo.save(optionalUser.get());
         return updatedUser;
     }
+
+    public User delUser(int id) {
+        Optional<User> optionalUser = repo.findById(id);
+        User user = optionalUser.get();
+        repo.delete(user);
+        return user;
+    }
 }
