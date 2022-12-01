@@ -38,4 +38,9 @@ public class GreetingController {
     public List<String> greeting() {
         return service.getList();
     }
+
+    @PutMapping("/putgreet")
+    public User greeting(@RequestParam int id, @RequestBody User user) {
+        return service.update(id, user);
+    }
 }

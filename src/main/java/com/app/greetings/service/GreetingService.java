@@ -4,7 +4,6 @@ import com.app.greetings.model.User;
 import com.app.greetings.repository.IGreetingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,5 +38,13 @@ public class GreetingService {
 
         return greetings;
 
+    }
+
+    public User update(int id, User user) {
+        Optional<User> optionalUser = repo.findById(id);
+        optionalUser.get().setFirstName(user.getFirstName());
+        optionalUser.get().setLastName(user.getLastName());
+        User updatedUser = repo.save(optionalUser.get());
+        return updatedUser;
     }
 }
